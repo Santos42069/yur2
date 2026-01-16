@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UNIMERCS | Inicio</title>
+  <link rel="stylesheet" href="prueba.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="menu-toggle" id="menuToggle">☰</div>
+    <a href="prueba.html" class="logo">
+      <div class="logo-icon">🛍</div>
+      <span>UNIMERCS</span>
+    </a>
+    <div class="search-container">
+      <span class="search-icon">🔍</span>
+      <input type="text" placeholder="Busca tu siguiente producto..." class="search-input">
+    </div>
+    <div class="header-icons">
+      <button class="icon-btn">
+        🔔
+        <span class="notification-badge">3</span>
+      </button>
+      <button class="icon-btn">👤</button>
+      <button class="sell-btn" onclick="window.location.href='pruebaCrearPub.html'">Sell Item</button>
+    </div>
+  </header>
+
+  <!-- Side Menu -->
+  <div class="side-menu" id="sideMenu">
+    <div class="menu-header">
+      <h3 style="color: #ecf0f1;">Menú</h3>
+      <button class="menu-close" id="menuClose">✕</button>
+    </div>
+    <div class="menu-main-content">
+      <a href="prueba.html">🏠 Inicio</a>
+      <a href="pruebaExplorar.html">🔍 Explorar</a>
+      <a href="pruebaCrearPub.html">✏️ Crear Publicación</a>
+      <a href="pruebaCuanto.html">📊 Calculadora de Notas</a>
+      <a href="pruebaRateProfes.html">👨‍🏫 Evaluar Profesores</a>
+      <a href="pruebaListaElectivas.html">📚 Electivas por Carrera</a>
+      <a href="pruebaEventos.html">📅 Próximos Eventos</a>
+    </div>
+    <div class="menu-bottom-section">
+      <a href="betalogin.html">🔑 Iniciar Sesión</a>
+      <a href="BetaRegister.html">📝 Registrarse</a>
+      <a href="#">⚙️ Ajustes</a>
+    </div>
+  </div>
+
+  <!-- Hero Banner -->
+  <div class="hero-banner">
+    <h1><span class="sparkle-icon">✨</span>Bienvenido a tu mercado universitario</h1>
+    <p>Compra, vende y conecta con otros estudiantes. Desde libros hasta muebles, encuentra todo lo que necesitas de compañeros universitarios.</p>
+  </div>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Stats Grid -->
+    <section class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number" id="totalProducts">0</div>
+        <div class="stat-label">📦 Productos Disponibles</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="totalUsers">150+</div>
+        <div class="stat-label">👥 Usuarios Activos</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="totalCategories">4</div>
+        <div class="stat-label">🏷️ Categorías</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="totalSales">50+</div>
+        <div class="stat-label">💰 Ventas Realizadas</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Category Pills -->
+  <div class="category-pills">
+    <button class="pill active">🌐 All Items</button>
+    <button class="pill">📚 Books</button>
+    <button class="pill">💻 Electronics</button>
+    <button class="pill">🛋️ Furniture</button>
+    <button class="pill">👕 Fashion</button>
+    <button class="pill">⚽ Sports</button>
+  </div>
+
+  <!-- Main Content -->
+  <main class="main-content" style="padding-top: 0;">
+    <!-- Section Header -->
+    <div class="section-header">
+      <h2 class="section-title">All Items</h2>
+      <span class="item-count" id="itemCount">0 items</span>
+    </div>
+
+    <!-- Items Grid -->
+    <div id="feed" class="items-grid"></div>
+  </main>
+
+  <!-- Chat Modal -->
+  <div id="chatModal" class="chat-modal hidden">
+    <div class="chat-modal-content">
+      <h3 class="modal-title">💬 Chatear con <span id="chatUser"></span></h3>
+      <div id="chatMessages" class="chat-messages"></div>
+      <input type="text" id="chatInput" class="chat-input" placeholder="Escribe tu mensaje...">
+      <div class="modal-buttons">
+        <button id="sendMessage" class="send-button">Enviar</button>
+        <button id="closeChat" class="close-button">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Contacto</h3>
+        <p>Email: soporte@unimercs.com</p>
+        <p>Tel: +57 318 2167823</p>
+      </div>
+      <div class="footer-section">
+        <h3>Enlaces</h3>
+        <ul>
+          <li><a href="prueba.html">Inicio</a></li>
+          <li><a href="pruebaExplorar.html">Explorar</a></li>
+          <li><a href="pruebaCuanto.html">Calculadora final</a></li>
+          <li><a href="pruebaListaElectivas.html">Lista de Electivas</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Síguenos</h3>
+        <p>¡Únete a nuestra comunidad en X!</p>
+        <p>¡Síguenos en Instagram!</p>
+      </div>
+      <div class="footer-section">
+        <h3>Políticas</h3>
+        <p>Políticas de privacidad</p>
+        <p>Términos y condiciones</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 UNIMERCS - Todos los derechos reservados.</p>
+    </div>
+  </footer>
+  <script src="prueba.js"></script> 
+</body>
+</html>

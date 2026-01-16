@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crear Publicación | UNIMERCS</title>
+  <link rel="stylesheet" href="pruebaCrearPub.css">
+</head>
+<body>
+  <!-- Floating Background Elements -->
+  <div class="floating-elements">
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+  </div>
+
+  <header class="header">
+    <div class="menu-toggle" id="menuToggle">☰</div>
+    <div class="logo"><a href="prueba.html">UNIMERCS</a></div>
+    <div class="search-bar">
+      <input type="text" placeholder="Busca tu siguiente producto..." class="search-input" />
+    </div>
+    <nav class="nav-links">
+      <a href="pruebaExplorar.html">Explorar</a>
+      <a href="betalogin.html">Iniciar Sesión</a>
+      <a href="BetaRegister.html">Registrarse</a>
+    </nav>
+    <div class="side-menu" id="sideMenu">
+      <div class="menu-main-content">
+        <a href="prueba.html">Inicio</a>
+        <a href="pruebaExplorar.html">Explorar</a>
+        <a href="pruebaCrearPub.html">Crear Publicación</a>
+      </div>
+      <div class="menu-bottom-section">
+        <a href="betalogin.html">Iniciar Sesión</a>
+        <a href="BetaRegister.html">Registrarse</a>
+        <a href="#">Ajustes</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <section class="post-form-section animate-fadeIn">
+      <h2 class="section-title">✏️ Crear Publicación</h2>
+      <form id="postForm">
+        <textarea id="postContent" placeholder="¿Qué quieres vender? (Ej: Vendo libro de cálculo - $20,000)" required></textarea>
+        <select id="postCategory" required>
+          <option value="" disabled selected>📦 Selecciona una categoría</option>
+          <option value="libros">📚 Libros</option>
+          <option value="comida">🍕 Comida</option>
+          <option value="objetos">📦 Objetos</option>
+          <option value="otros">🔧 Otros</option>
+        </select>
+        <input type="number" id="postPrice" placeholder="💰 Precio en COP" min="0" step="100">
+        <input type="file" id="fileInput" accept="image/*">
+        <button type="submit" class="submit-button">🚀 Publicar</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Contacto</h3>
+        <p>Email: soporte@unimercs.com</p>
+        <p>Tel: +57 318 2167823</p>
+      </div>
+      <div class="footer-section">
+        <h3>Enlaces</h3>
+        <ul>
+          <li><a href="prueba.html">Inicio</a></li>
+          <li><a href="pruebaExplorar.html">Explorar</a></li>
+          <li><a href="pruebaCuanto.html">Calculadora final</a></li>
+          <li><a href="pruebaListaElectivas.html">Lista de Electivas</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Síguenos</h3>
+        <p>¡Únete a nuestra comunidad en X!</p>
+        <p>¡Síguenos en Instagram!</p>
+      </div>
+      <div class="footer-section">
+        <h3>Políticas</h3>
+        <p>Políticas de privacidad</p>
+        <p>Términos y condiciones</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 UNIMERCS - Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="pruebaCrearPub.js">
+  </script>
+</body>
+</html>

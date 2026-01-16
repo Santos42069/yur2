@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UNIMERCS | Perfil</title>
+  <link rel="stylesheet" href="pruebaPerfil.css">
+</head>
+<body>
+  <!-- Floating Background Elements -->
+  <div class="floating-elements">
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+  </div>
+
+  <header class="header">
+    <div class="menu-toggle" id="menuToggle">☰</div>
+    <div class="logo"><a href="prueba.html">UNIMERCS</a></div>
+    <div class="search-bar">
+      <input type="text" placeholder="Busca tu próximo tesoro..." />
+    </div>
+    <nav class="nav-links" id="navLinks">
+      <a href="pruebaExplorar.html">Explorar</a>
+      <a href="betalogin.html">Iniciar Sesión</a>
+      <a href="BetaRegister.html">Registrarse</a>
+    </nav>
+    <div class="side-menu" id="sideMenu">
+      <div class="menu-main-content" id="menuMainContent">
+        <a href="prueba.html">Inicio</a>
+        <a href="pruebaExplorar.html">Explorar</a>
+        <a href="pruebaCrearPub.html">Crear Publicación</a>
+      </div>
+      <div class="menu-bottom-section" id="menuBottomSection">
+        <a href="betalogin.html">Iniciar Sesión</a>
+        <a href="BetaRegister.html">Registrarse</a>
+        <a href="#">Ajustes</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <section id="profile">
+      <div class="container">
+        <h2 class="page-title animate-fadeIn">👤 Mi Perfil</h2>
+        
+        <div id="messageContainer"></div>
+
+        <div class="profile-section animate-fadeIn">
+          <h3 class="section-title">✏️ Editar Perfil</h3>
+          <form id="profileForm" class="profile-form">
+            <input type="text" id="usernameInput" class="form-input" placeholder="Nombre de usuario" required>
+            <textarea id="bioInput" class="form-textarea" placeholder="Cuéntanos sobre ti..." rows="4"></textarea>
+            <button type="submit" class="submit-button">💾 Guardar Cambios</button>
+          </form>
+        </div>
+
+        <div class="profile-section animate-fadeIn">
+          <h3 class="section-title">💬 Comentarios en Profesores</h3>
+          <div id="commentsList"></div>
+        </div>
+
+        <div class="profile-section animate-fadeIn">
+          <h3 class="section-title">👁️ Productos Vistos</h3>
+          <div id="productsList"></div>
+        </div>
+
+        <div class="profile-section animate-fadeIn">
+          <h3 class="section-title">📝 Mis Publicaciones</h3>
+          <div class="filter-bar">
+            <select id="filterCategory" class="filter-category">
+              <option value="all">Todas las categorías</option>
+              <option value="libros">📚 Libros</option>
+              <option value="comida">🍕 Comida</option>
+              <option value="objetos">📦 Objetos</option>
+            </select>
+          </div>
+          <div id="postsList"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Contacto</h3>
+        <p>Email: soporte@unimercs.com</p>
+        <p>Tel: +57 318 2167823</p>
+      </div>
+      <div class="footer-section">
+        <h3>Enlaces</h3>
+        <ul>
+          <li><a href="prueba.html">Inicio</a></li>
+          <li><a href="pruebaExplorar.html">Explorar</a></li>
+          <li><a href="pruebaCuanto.html">Calculadora final</a></li>
+          <li><a href="pruebaListaElectivas.html">Lista de Electivas</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Síguenos</h3>
+        <p>¡Únete a nuestra comunidad en X!</p>
+        <p>¡Síguenos en Instagram!</p>
+      </div>
+      <div class="footer-section">
+        <h3>Políticas</h3>
+        <p>Políticas de privacidad</p>
+        <p>Términos y condiciones</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 UNIMERCS - Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="pruebaPerfil.js">
+  </script>
+</body>
+</html>
