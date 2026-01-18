@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIMERCS | Políticas de privacidad</title>
+    <link rel="stylesheet" href="privacyPolicy.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #2c3e50;
+            color: #ecf0f1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background: #34495e;
+            padding: 12px 32px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #ff6b6b, #ff8787);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .search-container {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 10px 16px 10px 40px;
+            background: #2c3e50;
+            border: 1px solid #445566;
+            border-radius: 8px;
+            color: #ecf0f1;
+            font-size: 14px;
+        }
+
+        .search-container input::placeholder {
+            color: #95a5a6;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #95a5a6;
+            font-size: 16px;
+        }
+
+        .header-icons {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-left: auto;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            color: #ecf0f1;
+            font-size: 22px;
+            cursor: pointer;
+            position: relative;
+            padding: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .icon-btn:hover {
+            color: #ff6b6b;
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            background: #ff6b6b;
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sell-btn {
+            background: linear-gradient(135deg, #ff6b6b, #ff5252);
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .sell-btn:hover {
+            background: linear-gradient(135deg, #ff5252, #ff3838);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4);
+        }
+
+        .menu-toggle {
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            background: rgba(255, 107, 107, 0.1);
+            border-radius: 8px;
+            min-width: 40px;
+            min-height: 40px;
+        }
+
+        .menu-toggle:hover {
+            background: rgba(255, 107, 107, 0.2);
+            transform: scale(1.05);
+        }
+
+        /* Side Menu */
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 280px;
+            height: 100vh;
+            background: #34495e;
+            z-index: 200;
+            padding: 24px;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            box-shadow: 4px 0 12px rgba(0, 0, 0, 0.3);
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .side-menu.active {
+            transform: translateX(0);
+        }
+
+        .menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .menu-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .menu-main-content {
+            flex-grow: 1;
+        }
+
+        .menu-main-content a,
+        .menu-bottom-section a {
+            display: block;
+            padding: 14px 16px;
+            color: #bdc3c7;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+            font-size: 15px;
+        }
+
+        .menu-main-content a:hover,
+        .menu-bottom-section a:hover {
+            background: #3d566e;
+            color: #ff6b6b;
+            transform: translateX(4px);
+        }
+
+        .menu-bottom-section {
+            margin-top: auto;
+            padding-top: 24px;
+            border-top: 1px solid #445566;
+        }
+
+        /* Main Content */
+        main {
+            flex: 1;
+            padding: 40px 32px;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        main h1 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+            color: #ff6b6b;
+        }
+
+        main h2 {
+            font-size: 24px;
+            margin: 32px 0 16px;
+            color: #ff8787;
+        }
+
+        main p {
+            margin-bottom: 16px;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        main ol {
+            padding-left: 24px;
+            margin-bottom: 24px;
+        }
+
+        main ol li {
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        main strong {
+            color: #ff8787;
+        }
+
+        /* Footer */
+        .footer {
+            background: #34495e;
+            padding: 40px 32px 20px;
+            margin-top: auto;
+            border-top: 1px solid #445566;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 32px;
+            margin-bottom: 24px;
+        }
+
+        .footer-section h3 {
+            color: #ff6b6b;
+            font-size: 16px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #95a5a6;
+            font-size: 14px;
+            line-height: 1.8;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: #ff6b6b;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #445566;
+            color: #7f8c8d;
+            font-size: 13px;
+        }
+
+        .date {
+            text-align: center;
+            margin-top: 50px;
+            font-style: italic;
+            color: #95a5a6;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="menu-toggle" id="menuToggle">☰</div>
+        <a href="prueba.html" class="logo">
+            <div class="logo-icon">🛍</div>
+            <span>UNIMERCS</span>
+        </a>
+        <div class="search-container">
+            <span class="search-icon">🔍</span>
+            <input type="text" placeholder="Busca tu siguiente producto..." class="search-input">
+        </div>
+        <div class="header-icons">
+            <button class="icon-btn">
+                🔔
+                <span class="notification-badge">3</span>
+            </button>
+            <button class="icon-btn"onclick="window.location.href='pruebaPerfil.html'">👤</button>
+            <button class="sell-btn" onclick="window.location.href='pruebaCrearPub.html'">¡Vende aquí!</button>
+        </div>
+    </header>
+
+    <!-- Side Menu -->
+    <div class="side-menu" id="sideMenu">
+        <div class="menu-header">
+            <h3 style="color: #ecf0f1;">Menú</h3>
+            <button class="menu-close" id="menuClose">✕</button>
+        </div>
+        <div class="menu-main-content">
+            <a href="prueba.html">🏠 Inicio</a>
+            <a href="pruebaExplorar.html">🔍 Explorar</a>
+            <a href="pruebaCrearPub.html">✏️ Crear Publicación</a>
+        </div>
+        <div class="menu-bottom-section">
+            <a href="betalogin.html">🔑 Iniciar Sesión</a>
+            <a href="BetaRegister.html">📝 Registrarse</a>
+            <a href="#">⚙️ Ajustes</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <h1>POLÍTICA DE PRIVACIDAD DE UNIMERCS</h1>
+
+        <p>UniMercs está comprometido con mantener protecciones de privacidad sólidas para sus usuarios. Nuestra Política de Privacidad está diseñada para ayudarle a entender cómo recopilamos, utilizamos y salvaguardamos la información que nos proporciona, y para asistirle en la toma de decisiones informadas al usar nuestro Servicio.</p>
+
+        <p>Para los fines de este Acuerdo, “Sitio” se refiere al sitio web de la Empresa, al que se puede acceder en unimercs.com.<br>
+        “Servicio” se refiere a los servicios de la Empresa accesibles a través del Sitio, en los que los usuarios pueden vender y comprar productos o servicios entre ellos.<br>
+        Los términos “nosotros”, “nos” y “nuestro” se refieren a la Empresa.<br>
+        “Usted” se refiere a usted, como usuario de nuestro Sitio o nuestro Servicio.<br>
+        Al acceder a nuestro Sitio o nuestro Servicio, usted acepta nuestra Política de Privacidad y Términos de Uso, y consiente en nuestra recopilación, almacenamiento, uso y divulgación de su Información Personal tal como se describe en esta Política de Privacidad.</p>
+
+        <h2>I. INFORMACIÓN QUE RECOPILAMOS</h2>
+
+        <p>Recopilamos “Información No Personal” e “Información Personal”. La Información No Personal incluye datos que no pueden usarse para identificarle personalmente, como datos de uso anónimos, información demográfica general que podamos recopilar, páginas de referencia/salida y URLs, tipos de plataforma, preferencias que usted envía y preferencias generadas en base a los datos que envía, y número de clics. La Información Personal incluye su correo electrónico, información personal, información de contacto y otros datos que usted nos envía a través del proceso de registro en el Sitio.</p>
+
+        <ol>
+            <li><strong>Información recopilada mediante tecnología</strong><br>
+                Para activar el Servicio, no necesita enviar ninguna Información Personal aparte de su dirección de correo electrónico. Para usar el Servicio posteriormente, sí necesita enviar más Información Personal [que puede incluir: correo electrónico escolar, nombre, dirección y número de teléfono]. Sin embargo, con el fin de mejorar la calidad del Servicio, rastreamos la información proporcionada por su navegador o por nuestra aplicación de software cuando visualiza o usa el Servicio, como el sitio web del que proviene (conocido como “URL de referencia”), el tipo de navegador que usa, el dispositivo desde el que se conectó al Servicio, la hora y fecha de acceso, y otra información que no le identifica personalmente. Rastreamos esta información utilizando cookies, o pequeños archivos de texto que incluyen un identificador único anónimo. Las cookies se envían al navegador del usuario desde nuestros servidores y se almacenan en el disco duro de la computadora del usuario. El envío de una cookie al navegador del usuario nos permite recopilar Información No Personal sobre ese usuario y mantener un registro de las preferencias del usuario al utilizar nuestros servicios, tanto de manera individual como agregada.<br><br>
+                La Empresa puede usar tanto cookies persistentes como de sesión; las cookies persistentes permanecen en su computadora después de cerrar la sesión y hasta que las elimine, mientras que las cookies de sesión expiran cuando cierra su navegador.
+            </li>
+
+            <li><strong>Información que nos proporciona al registrar una cuenta</strong><br>
+                Además de la información proporcionada automáticamente por su navegador cuando visita el Sitio, para convertirse en vendedor/comprador en el Servicio necesitará crear un perfil personal. Puede crear un perfil registrándose en el Servicio e ingresando su dirección de correo electrónico, y creando un nombre de usuario y una contraseña. Al registrarse, nos autoriza a recopilar, almacenar y usar su dirección de correo electrónico de acuerdo con esta Política de Privacidad.
+            </li>
+
+            <li><strong>Privacidad de los niños</strong><br>
+                El Sitio y el Servicio no están dirigidos a personas menores de 13 años. El Sitio no recopila ni solicita conscientemente información de personas menores de 13 años, ni permite que personas menores de 13 años se registren en el Servicio. En caso de que nos enteremos de que hemos recopilado información personal de una persona menor de 13 años sin el consentimiento de un padre o tutor, eliminaremos esa información lo antes posible. Si cree que hemos recopilado dicha información, por favor contáctenos en contacto@unimercs.com.
+            </li>
+        </ol>
+
+        <h2>II. CÓMO USAMOS Y COMPARTIMOS LA INFORMACIÓN</h2>
+
+        <p><strong>Información Personal:</strong></p>
+        <p>Salvo que se indique lo contrario en esta Política de Privacidad, no vendemos, intercambiamos, alquilamos ni compartimos de ninguna otra forma con fines de marketing su Información Personal con terceros sin su consentimiento. Sí compartimos Información Personal con proveedores que realizan servicios para la Empresa, como los servidores para nuestras comunicaciones por correo electrónico, a los que se les proporciona acceso a la dirección de correo electrónico del usuario con el propósito de enviar correos electrónicos desde nosotros. Esos proveedores usan su Información Personal solo bajo nuestra dirección y de acuerdo con nuestra Política de Privacidad.<br>
+        En general, la Información Personal que nos proporciona se usa para ayudarnos a comunicarnos con usted. Por ejemplo, usamos Información Personal para contactar a los usuarios en respuesta a preguntas, solicitar retroalimentación de los usuarios, proporcionar soporte técnico e informar a los usuarios sobre ofertas promocionales.<br>
+        Podemos compartir Información Personal con partes externas si tenemos una creencia de buena fe de que el acceso, uso, preservación o divulgación de la información es razonablemente necesario para cumplir con cualquier proceso legal aplicable o solicitud gubernamental ejecutable; para hacer cumplir los Términos de Servicio aplicables, incluyendo la investigación de posibles violaciones; abordar preocupaciones de fraude, seguridad o técnicas; o para proteger contra daños a los derechos, propiedad o seguridad de nuestros usuarios o del público, según lo requiera o permita la ley.</p>
+
+        <p><strong>Información No Personal:</strong></p>
+        <p>En general, usamos Información No Personal para ayudarnos a mejorar el Servicio y personalizar la experiencia del usuario. También agregamos Información No Personal para rastrear tendencias y analizar patrones de uso en el Sitio. Esta Política de Privacidad no limita de ninguna manera nuestro uso o divulgación de Información No Personal, y nos reservamos el derecho de usar y divulgar dicha Información No Personal a nuestros socios, anunciantes y otros terceros a nuestra discreción.<br>
+        En caso de que pasemos por una transacción comercial como una fusión, adquisición por otra empresa o venta de la totalidad o una parte de nuestros activos, su Información Personal puede estar entre los activos transferidos. Usted reconoce y consiente que tales transferencias puedan ocurrir y están permitidas por esta Política de Privacidad, y que cualquier adquiriente de nuestros activos puede continuar procesando su Información Personal según lo establecido en esta Política de Privacidad. Si nuestras prácticas de información cambian en algún momento en el futuro, publicaremos los cambios en la política en el Sitio para que pueda optar por no participar en las nuevas prácticas de información. Le sugerimos que revise el Sitio periódicamente si le preocupa cómo se usa su información.</p>
+
+        <h2>III. CÓMO PROTEGEMOS LA INFORMACIÓN</h2>
+
+        <p>Implementamos medidas de seguridad diseñadas para proteger su información contra accesos no autorizados. Su cuenta está protegida por la contraseña de su cuenta y le instamos a tomar medidas para mantener segura su información personal no divulgando su contraseña y cerrando sesión en su cuenta después de cada uso. Además, protegemos su información contra posibles brechas de seguridad implementando ciertas medidas de seguridad tecnológicas, incluyendo encriptación, firewalls y tecnología de capa de sockets segura. Sin embargo, estas medidas no garantizan que su información no sea accedida, divulgada, alterada o destruida por una brecha de dichos firewalls y software de servidor seguro. Al usar nuestro Servicio, usted reconoce que entiende y acepta asumir estos riesgos.</p>
+
+        <h2>IV. SUS DERECHOS RESPECTO AL USO DE SU INFORMACIÓN PERSONAL</h2>
+
+        <p>Usted tiene el derecho en cualquier momento de impedir que nos comuniquemos con usted con fines de marketing. Cuando enviamos una comunicación promocional a un usuario, este puede optar por no recibir más comunicaciones promocionales siguiendo las instrucciones de cancelación de suscripción proporcionadas en cada correo electrónico promocional. También puede indicar que no desea recibir comunicaciones de marketing de nosotros en la sección de configuraciones del Sitio. Tenga en cuenta que, no obstante las preferencias promocionales que indique ya sea cancelando la suscripción o optando por no participar en la configuración del Sitio, podemos continuar enviándole correos electrónicos administrativos, incluyendo, por ejemplo, actualizaciones periódicas de nuestra Política de Privacidad.</p>
+
+        <h2>V. ENLACES A OTROS SITIOS WEB</h2>
+
+        <p>Como parte del Servicio, podemos proporcionar enlaces o compatibilidad con otros sitios web o aplicaciones. Sin embargo, no somos responsables de las prácticas de privacidad empleadas por esos sitios web ni de la información o contenido que contienen. Esta Política de Privacidad aplica únicamente a la información recopilada por nosotros a través del Sitio y el Servicio. Por lo tanto, esta Política de Privacidad no aplica a su uso de un sitio web de terceros accedido seleccionando un enlace en nuestro Sitio o a través de nuestro Servicio. En la medida en que acceda o use el Servicio a través de o en otro sitio web o aplicación, entonces la política de privacidad de ese otro sitio web o aplicación aplicará a su acceso o uso de ese sitio o aplicación. Alentamos a nuestros usuarios a leer las declaraciones de privacidad de otros sitios web antes de proceder a usarlos.</p>
+
+        <h2>VI. CAMBIOS EN NUESTRA POLÍTICA DE PRIVACIDAD</h2>
+
+        <p>La Empresa se reserva el derecho de cambiar esta política y nuestros Términos de Servicio en cualquier momento. Le notificaremos de cambios significativos en nuestra Política de Privacidad enviando un aviso a la dirección de correo electrónico principal especificada en su cuenta o colocando un aviso destacado en nuestro sitio. Los cambios significativos entrarán en vigor 30 días después de dicha notificación. Los cambios no materiales o aclaraciones entrarán en vigor de inmediato. Debe revisar periódicamente el Sitio y esta página de privacidad para actualizaciones.</p>
+
+        <h2>VII. CONTÁCTENOS</h2>
+
+        <p>Si tiene alguna pregunta respecto a esta Política de Privacidad o las prácticas de este Sitio, por favor contáctenos enviando un correo electrónico a <a href="mailto:contacto@unimercs.com" style="color: #ff6b6b;">contacto@unimercs.com</a>.</p>
+
+        <p class="date">Última actualización: Esta Política de Privacidad fue actualizada por última vez el 16/01/2026.</p>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p>Email: soporte@unimercs.com</p>
+                <p>Tel: +57 318 2167823</p>
+            </div>
+            <div class="footer-section">
+                <h3>Enlaces</h3>
+                <ul>
+                    <li><a href="prueba.html">Inicio</a></li>
+                    <li><a href="pruebaExplorar.html">Explorar</a></li>
+                    <li><a href="pruebaCuanto.html">Calculadora final</a></li>
+                    <li><a href="pruebaListaElectivas.html">Lista de Electivas</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Síguenos</h3>
+                <p>¡Únete a nuestra comunidad en X!</p>
+                <p>¡Síguenos en Instagram!</p>
+            </div>
+            <div class="footer-section">
+                <h3>Políticas</h3>
+                <p>Políticas de privacidad</p>
+                <p>Términos y condiciones</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 UNIMERCS - Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple script for mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const menuClose = document.getElementById('menuClose');
+        const sideMenu = document.getElementById('sideMenu');
+
+        menuToggle.addEventListener('click', () => {
+            sideMenu.classList.add('active');
+        });
+
+        menuClose.addEventListener('click', () => {
+            sideMenu.classList.remove('active');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!sideMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+                sideMenu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

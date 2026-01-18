@@ -1,4 +1,4 @@
-// Sample data for fallback
+ // Sample data
     const samplePosts = [
       {
         id: 1,
@@ -38,19 +38,34 @@
     // DOM elements
     const listings = document.getElementById('listings');
     const filterCategory = document.getElementById('filterCategory');
-    const menuToggle = document.querySelector('#menuToggle');
-    const sideMenu = document.querySelector('#sideMenu');
+    const menuToggle = document.getElementById('menuToggle');
+    const menuClose = document.getElementById('menuClose');
+    const sideMenu = document.getElementById('sideMenu');
+    const searchInput = document.querySelector('.search-input');
+
+    // State
+    let posts = JSON.parse(localStorage.getItem('posts')) || [...samplePosts];
     let isMenuOpen = false;
 
-    // Enhanced menu toggle logic
+    // Menu toggle with hover functionality
     if (menuToggle && sideMenu) {
-      menuToggle.addEventListener('mouseover', () => {
+      menuToggle.addEventListener('click', () => {
+        isMenuOpen = !isMenuOpen;
+        sideMenu.classList.toggle('active');
+      });
+
+      menuClose?.addEventListener('click', () => {
+        isMenuOpen = false;
+        sideMenu.classList.remove('active');
+      });
+
+      menuToggle.addEventListener('mouseenter', () => {
         if (!isMenuOpen) {
           sideMenu.classList.add('active');
         }
       });
 
-      sideMenu.addEventListener('mouseover', () => {
+      sideMenu.addEventListener('mouseenter', () => {
         if (!isMenuOpen) {
           sideMenu.classList.add('active');
         }
@@ -61,29 +76,24 @@
           sideMenu.classList.remove('active');
         }
       });
-
-      menuToggle.addEventListener('click', () => {
-        isMenuOpen = !isMenuOpen;
-        sideMenu.classList.toggle('active', isMenuOpen);
-        menuToggle.classList.add('animate-pulse-once');
-        setTimeout(() => menuToggle.classList.remove('animate-pulse-once'), 300);
-      });
     }
 
-    // State
-    let posts = JSON.parse(localStorage.getItem('posts')) || [...samplePosts];
-
-    // Render listings with animations and images
+    // Render listings
     function renderListings(postsToShow = posts) {
       if (!listings) return;
       listings.innerHTML = '';
+      
+      if (postsToShow.length === 0) {
+        listings.innerHTML = `
+          <div style="grid-column: 1/-1; text-align: center; padding: 60px 20px;">
+            <h3 style="font-size: 24px; margin-bottom: 16px; color: #95a5a6;">🔍 No se encontraron productos</h3>
+            <p style="color: #7f8c8d;">Intenta con otro filtro o categoría</p>
+          </div>
+        `;
+        return;
+      }
+
       postsToShow.forEach((post, index) => {
-        const listingElement = document.createElement('div');
-        listingElement.className = `listing-item animate-slideIn${index % 2 === 0 ? 'Left' : 'Right'}`;
-        listingElement.style.animationDelay = `${index * 0.1}s`;
-        listingElement.setAttribute('data-category', post.category);
-        
-        // Get category emoji
         const categoryEmojis = {
           'libros': '📚',
           'comida': '🍕',
@@ -92,11 +102,16 @@
         };
         const categoryEmoji = categoryEmojis[post.category] || '📦';
         
-        // Create image HTML if image exists
+        const listingElement = document.createElement('div');
+        listingElement.className = `listing-item animate-slideIn${index % 2 === 0 ? 'Left' : 'Right'}`;
+        listingElement.style.animationDelay = `${index * 0.1}s`;
+        listingElement.setAttribute('data-category', post.category);
+        
         const imageHTML = post.image ? 
           `<div class="listing-image">
             <img src="${post.image}" alt="Imagen del producto" loading="lazy">
-          </div>` : '';
+          </div>` : 
+          `<div class="listing-image">${categoryEmoji}</div>`;
         
         listingElement.innerHTML = `
           ${imageHTML}
@@ -112,7 +127,6 @@
           </div>
         `;
         
-        // Keep your exact click functionality
         listingElement.addEventListener('click', (e) => {
           if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'A' && e.target.tagName !== 'IMG') {
             const viewedProducts = JSON.parse(localStorage.getItem('viewedProducts')) || [];
@@ -133,7 +147,7 @@
       });
     }
 
-    // Handle category filter - keeping your exact functionality
+    // Category filter
     if (filterCategory) {
       filterCategory.addEventListener('change', () => {
         const category = filterCategory.value;
@@ -142,15 +156,43 @@
       });
     }
 
-    // Initial render - keeping your exact functionality
-    document.addEventListener('DOMContentLoaded', () => {
-      renderListings();
+    // Search functionality
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        if (searchTerm === '') {
+          const category = filterCategory.value;
+          const filteredPosts = category === 'all' ? posts : posts.filter(post => post.category === category);
+          renderListings(filteredPosts);
+          return;
+        }
+        
+        const filteredPosts = posts.filter(post => 
+          post.content.toLowerCase().includes(searchTerm) ||
+          post.username.toLowerCase().includes(searchTerm) ||
+          post.category.toLowerCase().includes(searchTerm)
+        );
+        renderListings(filteredPosts);
+      });
+    }
+
+    // Close menu on outside click
+    document.addEventListener('click', (e) => {
+      if (sideMenu && !sideMenu.contains(e.target) && e.target !== menuToggle && isMenuOpen) {
+        isMenuOpen = false;
+        sideMenu.classList.remove('active');
+      }
     });
 
-    // Add keyboard navigation
+    // Keyboard shortcuts
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && isMenuOpen) {
         isMenuOpen = false;
         sideMenu.classList.remove('active');
       }
+    });
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      renderListings();
     });

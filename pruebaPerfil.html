@@ -7,80 +7,81 @@
   <link rel="stylesheet" href="pruebaPerfil.css">
 </head>
 <body>
-  <!-- Floating Background Elements -->
-  <div class="floating-elements">
-    <div class="floating-shape"></div>
-    <div class="floating-shape"></div>
-    <div class="floating-shape"></div>
-    <div class="floating-shape"></div>
-    <div class="floating-shape"></div>
-  </div>
-
+  <!-- Header -->
   <header class="header">
     <div class="menu-toggle" id="menuToggle">☰</div>
-    <div class="logo"><a href="prueba.html">UNIMERCS</a></div>
-    <div class="search-bar">
+    <a href="prueba.html" class="logo">
+      <div class="logo-icon">🛍</div>
+      <span>UNIMERCS</span>
+    </a>
+    <div class="search-container">
       <input type="text" placeholder="Busca tu próximo tesoro..." />
     </div>
-    <nav class="nav-links" id="navLinks">
-      <a href="pruebaExplorar.html">Explorar</a>
-      <a href="betalogin.html">Iniciar Sesión</a>
-      <a href="BetaRegister.html">Registrarse</a>
-    </nav>
-    <div class="side-menu" id="sideMenu">
-      <div class="menu-main-content" id="menuMainContent">
-        <a href="prueba.html">Inicio</a>
-        <a href="pruebaExplorar.html">Explorar</a>
-        <a href="pruebaCrearPub.html">Crear Publicación</a>
-      </div>
-      <div class="menu-bottom-section" id="menuBottomSection">
-        <a href="betalogin.html">Iniciar Sesión</a>
-        <a href="BetaRegister.html">Registrarse</a>
-        <a href="#">Ajustes</a>
-      </div>
+    <div class="header-icons">
+      <button class="icon-btn">
+        🔔
+        <span class="notification-badge">3</span>
+      </button>
+      <button class="icon-btn"onclick="window.location.href='pruebaPerfil.html'">👤</button>
+      <button class="sell-btn" onclick="window.location.href='pruebaCrearPub.html'">¡Vende aquí!</button>
     </div>
   </header>
 
+  <!-- Side Menu -->
+  <div class="side-menu" id="sideMenu">
+    <div class="menu-header">
+      <h3 style="color: #ecf0f1;">Menú</h3>
+      <button class="menu-close" id="menuClose">✕</button>
+    </div>
+    <div class="menu-main-content" id="menuMainContent">
+      <a href="prueba.html">Inicio</a>
+      <a href="pruebaExplorar.html">Explorar</a>
+      <a href="pruebaCrearPub.html">Crear Publicación</a>
+    </div>
+    <div class="menu-bottom-section" id="menuBottomSection">
+      <a href="betalogin.html">Iniciar Sesión</a>
+      <a href="BetaRegister.html">Registrarse</a>
+      <a href="#">Ajustes</a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
   <main class="main-content">
-    <section id="profile">
-      <div class="container">
-        <h2 class="page-title animate-fadeIn">👤 Mi Perfil</h2>
-        
-        <div id="messageContainer"></div>
+    <h2 class="page-title animate-fadeIn">👤 Mi Perfil</h2>
+    
+    <div id="messageContainer"></div>
 
-        <div class="profile-section animate-fadeIn">
-          <h3 class="section-title">✏️ Editar Perfil</h3>
-          <form id="profileForm" class="profile-form">
-            <input type="text" id="usernameInput" class="form-input" placeholder="Nombre de usuario" required>
-            <textarea id="bioInput" class="form-textarea" placeholder="Cuéntanos sobre ti..." rows="4"></textarea>
-            <button type="submit" class="submit-button">💾 Guardar Cambios</button>
-          </form>
-        </div>
+    <div class="profile-section animate-fadeIn">
+      <h3 class="section-title">✏️ Editar Perfil</h3>
+      <form id="profileForm" class="profile-form">
+        <input type="text" id="usernameInput" class="form-input" placeholder="Nombre de usuario" required>
+        <textarea id="bioInput" class="form-textarea" placeholder="Cuéntanos sobre ti..." rows="4"></textarea>
+        <button type="submit" class="submit-button">💾 Guardar Cambios</button>
+      </form>
+    </div>
 
-        <div class="profile-section animate-fadeIn">
-          <h3 class="section-title">💬 Comentarios en Profesores</h3>
-          <div id="commentsList"></div>
-        </div>
+    <div class="profile-section animate-fadeIn">
+      <h3 class="section-title">💬 Comentarios en Profesores</h3>
+      <div id="commentsList"></div>
+    </div>
 
-        <div class="profile-section animate-fadeIn">
-          <h3 class="section-title">👁️ Productos Vistos</h3>
-          <div id="productsList"></div>
-        </div>
+    <div class="profile-section animate-fadeIn">
+      <h3 class="section-title">👁️ Productos Vistos</h3>
+      <div id="productsList"></div>
+    </div>
 
-        <div class="profile-section animate-fadeIn">
-          <h3 class="section-title">📝 Mis Publicaciones</h3>
-          <div class="filter-bar">
-            <select id="filterCategory" class="filter-category">
-              <option value="all">Todas las categorías</option>
-              <option value="libros">📚 Libros</option>
-              <option value="comida">🍕 Comida</option>
-              <option value="objetos">📦 Objetos</option>
-            </select>
-          </div>
-          <div id="postsList"></div>
-        </div>
+    <div class="profile-section animate-fadeIn">
+      <h3 class="section-title">📝 Mis Publicaciones</h3>
+      <div class="filter-bar">
+        <select id="filterCategory" class="filter-category">
+          <option value="all">Todas las categorías</option>
+          <option value="libros">📚 Libros</option>
+          <option value="comida">🍕 Comida</option>
+          <option value="objetos">📦 Objetos</option>
+        </select>
       </div>
-    </section>
+      <div id="postsList"></div>
+    </div>
   </main>
 
   <footer class="footer">
@@ -101,17 +102,21 @@
       </div>
       <div class="footer-section">
         <h3>Síguenos</h3>
-        <p>¡Únete a nuestra comunidad en X!</p>
-        <p>¡Síguenos en Instagram!</p>
+        <ul>
+          <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1">¡Síguenos en Instagram!</a></li>
+          <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1">¡Únete a nuestra comunidad en X!</a></li>
+        </ul>
       </div>
       <div class="footer-section">
         <h3>Políticas</h3>
-        <p>Políticas de privacidad</p>
-        <p>Términos y condiciones</p>
+        <ul>
+          <li><a href="privacyPolicy.html">Políticas de privacidad</a></li>
+          <li><a href="termsConditions.html">Términos y condiciones</a></li>
+        </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2025 UNIMERCS - Todos los derechos reservados.</p>
+      <p>&copy; 2026 UNIMERCS - Todos los derechos reservados.</p>
     </div>
   </footer>
 

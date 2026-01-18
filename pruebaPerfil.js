@@ -1,4 +1,4 @@
-// Sample data
+// Sample data (same as original)
     const sampleProfile = {
       username: "Estudiante Javeriana",
       bio: "Estudiante en la Javeriana, apasionado por la tecnología y el emprendimiento."
@@ -48,26 +48,33 @@
     const postsList = document.getElementById('postsList');
     const filterCategory = document.getElementById('filterCategory');
     const messageContainer = document.getElementById('messageContainer');
-    const menuToggle = document.querySelector('#menuToggle');
-    const sideMenu = document.querySelector('#sideMenu');
-    const navLinks = document.querySelector('#navLinks');
-    const menuMainContent = document.querySelector('#menuMainContent');
-    const menuBottomSection = document.querySelector('#menuBottomSection');
+    const menuToggle = document.getElementById('menuToggle');
+    const menuClose = document.getElementById('menuClose');
+    const sideMenu = document.getElementById('sideMenu');
+    const navLinks = document.querySelector('.header-icons');
+    const menuMainContent = document.getElementById('menuMainContent');
+    const menuBottomSection = document.getElementById('menuBottomSection');
     let isMenuOpen = false;
     let userEmail = '';
 
-    // Enhanced menu toggle logic
+    // Menu toggle
     if (menuToggle && sideMenu) {
-      menuToggle.addEventListener('mouseover', () => {
-        if (!isMenuOpen) {
-          sideMenu.classList.add('active');
-        }
+      menuToggle.addEventListener('click', () => {
+        isMenuOpen = !isMenuOpen;
+        sideMenu.classList.toggle('active');
       });
 
-      sideMenu.addEventListener('mouseover', () => {
-        if (!isMenuOpen) {
-          sideMenu.classList.add('active');
-        }
+      menuClose?.addEventListener('click', () => {
+        isMenuOpen = false;
+        sideMenu.classList.remove('active');
+      });
+
+      menuToggle.addEventListener('mouseenter', () => {
+        if (!isMenuOpen) sideMenu.classList.add('active');
+      });
+
+      sideMenu.addEventListener('mouseenter', () => {
+        if (!isMenuOpen) sideMenu.classList.add('active');
       });
 
       document.addEventListener('mouseover', (e) => {
@@ -75,16 +82,9 @@
           sideMenu.classList.remove('active');
         }
       });
-
-      menuToggle.addEventListener('click', () => {
-        isMenuOpen = !isMenuOpen;
-        sideMenu.classList.toggle('active', isMenuOpen);
-        menuToggle.classList.add('animate-pulse-once');
-        setTimeout(() => menuToggle.classList.remove('animate-pulse-once'), 300);
-      });
     }
 
-    // Enhanced message display function with error type
+    // Message display
     function showMessage(text, type = 'success') {
       const message = document.createElement('div');
       message.className = `message ${type}`;
@@ -93,11 +93,8 @@
       messageContainer.innerHTML = '';
       messageContainer.appendChild(message);
       
-      setTimeout(() => {
-        message.classList.add('show');
-      }, 100);
+      setTimeout(() => message.classList.add('show'), 100);
 
-      // Auto-hide after different durations based on type
       const hideDelay = type === 'error' ? 5000 : 3000;
       setTimeout(() => {
         message.classList.remove('show');
@@ -109,29 +106,16 @@
       }, hideDelay);
     }
 
-    // Update navigation based on session
+    // Update navigation
     function updateNavigation() {
       const session = JSON.parse(localStorage.getItem('session'));
       if (session && session.email) {
-        navLinks.innerHTML = `
-          <a href="pruebaExplorar.html">Explorar</a>
-          <a href="#" id="logoutLink">Cerrar Sesión</a>
-          <a href="pruebaPerfil.html">Perfil</a>
-        `;
-        menuMainContent.innerHTML = `
-          <a href="prueba.html">Inicio</a>
-          <a href="pruebaExplorar.html">Explorar</a>
-          <a href="pruebaCrearPub.html">Crear Publicación</a>
-        `;
         menuBottomSection.innerHTML = `  
           <a href="pruebaPerfil.html">👤 Perfil</a>
           <a href="#" id="logoutSideLink">🚪 Cerrar Sesión</a>
         `;
         
-        // Add logout event listeners
-        const logoutLink = document.getElementById('logoutLink');
         const logoutSideLink = document.getElementById('logoutSideLink');
-        if (logoutLink) logoutLink.addEventListener('click', logout);
         if (logoutSideLink) logoutSideLink.addEventListener('click', logout);
       }
     }
@@ -143,91 +127,6 @@
       setTimeout(() => {
         window.location.href = 'betalogin.html';
       }, 1500);
-    }
-
-    // Navigation helper functions with error handling
-    function navigateToProduct(productId) {
-      try {
-        // Store the selected product in localStorage for the details page
-        const selectedProduct = viewedProducts.find(p => p.id == productId);
-        if (selectedProduct) {
-          localStorage.setItem('selectedProduct', JSON.stringify(selectedProduct));
-        }
-        
-        // Try to navigate to product details page
-        const detailsPage = `pruebaPubDetails.html?postId=${productId}`;
-        
-        // Check if the page exists by creating a test link
-        const testLink = document.createElement('a');
-        testLink.href = detailsPage;
-        
-        // Navigate to the details page
-        window.location.href = detailsPage;
-        
-      } catch (error) {
-        console.error('Error navigating to product:', error);
-        showMessage('❌ Error al cargar el producto. Redirigiendo a explorar...', 'error');
-        setTimeout(() => {
-          window.location.href = 'pruebaExplorar.html';
-        }, 2000);
-      }
-    }
-
-    function navigateToPost(postId) {
-      try {
-        // Store the selected post in localStorage for the details page
-        const selectedPost = posts.find(p => p.id == postId);
-        if (selectedPost) {
-          localStorage.setItem('selectedPost', JSON.stringify(selectedPost));
-        }
-        
-        // Try to navigate to post details page
-        const detailsPage = `pruebaPubDetails.html?postId=${postId}`;
-        window.location.href = detailsPage;
-        
-      } catch (error) {
-        console.error('Error navigating to post:', error);
-        showMessage('❌ Error al cargar la publicación. Redirigiendo a explorar...', 'error');
-        setTimeout(() => {
-          window.location.href = 'pruebaExplorar.html';
-        }, 2000);
-      }
-    }
-
-    // Alternative navigation function if details page doesn't exist
-    function showProductModal(product) {
-      const modal = document.createElement('div');
-      modal.className = 'product-modal';
-      modal.innerHTML = `
-        <div class="modal-content">
-          <div class="modal-header">
-            <h3>🛍️ ${product.title}</h3>
-            <button class="close-modal">&times;</button>
-          </div>
-          <div class="modal-body">
-            <p><strong>Precio:</strong> ${product.price.toLocaleString('es-CO', { style: 'currency', currency: 'COP' })}</p>
-            <p><strong>Descripción:</strong> ${product.description}</p>
-            <div class="modal-actions">
-              <button onclick="window.location.href='pruebaExplorar.html'" class="btn-primary">Ver más productos</button>
-            </div>
-          </div>
-        </div>
-      `;
-      
-      document.body.appendChild(modal);
-      
-      // Close modal functionality
-      const closeBtn = modal.querySelector('.close-modal');
-      closeBtn.addEventListener('click', () => {
-        document.body.removeChild(modal);
-      });
-      
-      // Close on outside click
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-          document.body.removeChild(modal);
-        }
-      });
     }
 
     // State
@@ -266,7 +165,7 @@
       });
     }
 
-    // Enhanced render viewed products with navigation
+    // Render viewed products
     function renderProducts() {
       if (!productsList) return;
       productsList.innerHTML = '';
@@ -285,36 +184,15 @@
           <div class="click-hint">👆 Haz clic para ver detalles</div>
         `;
         
-        // Enhanced click handler with error handling and fallback
-        productElement.addEventListener('click', (e) => {
-          e.preventDefault();
-          productElement.style.transform = 'scale(0.98)';
-          
-          setTimeout(() => {
-            productElement.style.transform = '';
-            
-            // Check if product details page exists, otherwise show modal
-            if (typeof window !== 'undefined') {
-              try {
-                navigateToProduct(product.id);
-              } catch (error) {
-                console.error('Navigation failed, showing modal instead:', error);
-                showProductModal(product);
-              }
-            }
-          }, 150);
-        });
-
-        // Add hover effects
-        productElement.addEventListener('mouseenter', () => {
-          productElement.style.cursor = 'pointer';
+        productElement.addEventListener('click', () => {
+          window.location.href = `pruebaPubDetails.html?postId=${product.id}`;
         });
 
         productsList.appendChild(productElement);
       });
     }
 
-    // Enhanced render posts with navigation
+    // Render posts
     function renderPosts(category = 'all') {
       if (!postsList) return;
       postsList.innerHTML = '';
@@ -351,58 +229,33 @@
           </div>
         `;
 
-        // Enhanced click handler for posts
         postElement.addEventListener('click', (e) => {
-          // Don't navigate if clicking on action buttons
           if (e.target.classList.contains('edit-post-btn') || e.target.classList.contains('delete-post-btn')) {
             return;
           }
-          
-          e.preventDefault();
-          postElement.style.transform = 'scale(0.98)';
-          setTimeout(() => {
-            postElement.style.transform = '';
-            navigateToPost(post.id);
-          }, 150);
+          window.location.href = `pruebaPubDetails.html?postId=${post.id}`;
         });
 
-        // Add action button handlers
         const editBtn = postElement.querySelector('.edit-post-btn');
         const deleteBtn = postElement.querySelector('.delete-post-btn');
 
         editBtn.addEventListener('click', (e) => {
           e.stopPropagation();
-          editPost(post.id);
+          showMessage('✏️ Funcionalidad de edición en desarrollo...', 'info');
         });
 
         deleteBtn.addEventListener('click', (e) => {
           e.stopPropagation();
-          deletePost(post.id);
-        });
-
-        // Add hover effects
-        postElement.addEventListener('mouseenter', () => {
-          postElement.style.cursor = 'pointer';
+          if (confirm('¿Estás seguro de que quieres eliminar esta publicación?')) {
+            posts = posts.filter(p => p.id !== post.id);
+            localStorage.setItem('posts', JSON.stringify(posts));
+            showMessage('🗑️ Publicación eliminada exitosamente.', 'success');
+            renderPosts(filterCategory.value || 'all');
+          }
         });
 
         postsList.appendChild(postElement);
       });
-    }
-
-    // Post management functions
-    function editPost(postId) {
-      showMessage('✏️ Funcionalidad de edición en desarrollo...', 'info');
-      // Here you could redirect to an edit form or open a modal
-      // For now, we'll just show a message
-    }
-
-    function deletePost(postId) {
-      if (confirm('¿Estás seguro de que quieres eliminar esta publicación?')) {
-        posts = posts.filter(p => p.id !== postId);
-        localStorage.setItem('posts', JSON.stringify(posts));
-        showMessage('🗑️ Publicación eliminada exitosamente.', 'success');
-        renderPosts(filterCategory.value || 'all');
-      }
     }
 
     // Save profile
@@ -423,22 +276,17 @@
         localStorage.setItem('userProfile', JSON.stringify(profile));
         
         showMessage('✅ Perfil actualizado correctamente.', 'success');
-        
-        // Add visual feedback
-        const submitButton = profileForm.querySelector('.submit-button');
-        submitButton.classList.add('animate-pulse-once');
-        setTimeout(() => submitButton.classList.remove('animate-pulse-once'), 300);
       });
     }
 
-    // Filter posts by category
+    // Filter posts
     if (filterCategory) {
       filterCategory.addEventListener('change', () => {
         renderPosts(filterCategory.value);
       });
     }
 
-    // Check login and render
+    // Check login and initialize
     document.addEventListener('DOMContentLoaded', () => {
       const session = JSON.parse(localStorage.getItem('session'));
       if (!session || !session.email || !session.email.endsWith('javeriana.edu.co')) {
@@ -452,34 +300,19 @@
       renderComments();
       renderProducts();
       renderPosts();
-
-      // Add input animation effects
-      const inputs = document.querySelectorAll('.form-input, .form-textarea');
-      inputs.forEach((input, index) => {
-        setTimeout(() => {
-          input.style.opacity = '0';
-          input.style.transform = 'translateY(20px)';
-          input.style.transition = 'all 0.5s ease';
-          
-          setTimeout(() => {
-            input.style.opacity = '1';
-            input.style.transform = 'translateY(0)';
-          }, 50);
-        }, 500 + (index * 200));
-
-        input.addEventListener('focus', function() {
-          this.style.transform = 'translateY(-2px)';
-        });
-        
-        input.addEventListener('blur', function() {
-          this.style.transform = 'translateY(0)';
-        });
-      });
     });
 
-    // Add keyboard navigation
+    // Keyboard shortcuts
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && isMenuOpen) {
+        isMenuOpen = false;
+        sideMenu.classList.remove('active');
+      }
+    });
+
+    // Close menu on outside click
+    document.addEventListener('click', (e) => {
+      if (sideMenu && !sideMenu.contains(e.target) && e.target !== menuToggle && isMenuOpen) {
         isMenuOpen = false;
         sideMenu.classList.remove('active');
       }
