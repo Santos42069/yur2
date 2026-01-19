@@ -11,7 +11,7 @@
   <header class="header">
     <div class="menu-toggle" id="menuToggle">☰</div>
     <a href="prueba.html" class="logo">
-      <div class="logo-icon">🛍</div>
+      <div class="logo-icon">NIG</div>
       <span>UNIMERCS</span>
     </a>
     <div class="search-container">
@@ -19,12 +19,8 @@
       <input type="text" placeholder="Busca tu siguiente producto..." class="search-input">
     </div>
     <div class="header-icons">
-      <button class="icon-btn">
-        🔔
-        <span class="notification-badge">3</span>
-      </button>
-      <button class="icon-btn">👤</button>
-      <button class="sell-btn" onclick="window.location.href='pruebaCrearPub.html'">Sell Item</button>
+      <button class="icon-btn" onclick="window.location.href='pruebaPerfil.html'">👤</button>
+        <button class="sell-btn" onclick="handleCreatePost()">¡Vende aquí!</button>
     </div>
   </header>
 
@@ -35,24 +31,20 @@
       <button class="menu-close" id="menuClose">✕</button>
     </div>
     <div class="menu-main-content">
-      <a href="prueba.html">🏠 Inicio</a>
-      <a href="pruebaExplorar.html">🔍 Explorar</a>
-      <a href="pruebaCrearPub.html">✏️ Crear Publicación</a>
-      <a href="pruebaCuanto.html">📊 Calculadora de Notas</a>
-      <a href="pruebaRateProfes.html">👨‍🏫 Evaluar Profesores</a>
-      <a href="pruebaListaElectivas.html">📚 Electivas por Carrera</a>
-      <a href="pruebaEventos.html">📅 Próximos Eventos</a>
+      <a href="prueba.html"> Inicio</a>
+      <a href="pruebaExplorar.html"> Explorar</a>
+      <a href="pruebaCrearPub.html"> Crear Publicación</a>
     </div>
     <div class="menu-bottom-section">
-      <a href="betalogin.html">🔑 Iniciar Sesión</a>
-      <a href="BetaRegister.html">📝 Registrarse</a>
-      <a href="#">⚙️ Ajustes</a>
+      <a href="betalogin.html"> Iniciar Sesión</a>
+      <a href="BetaRegister.html"> Registrarse</a>
+      <a href="#"> Ajustes</a>
     </div>
   </div>
 
   <!-- Hero Banner -->
   <div class="hero-banner">
-    <h1><span class="sparkle-icon">✨</span>Bienvenido a tu mercado universitario</h1>
+    <h1><span class="sparkle-icon">✨</span>Gay el que lo lea</h1>
     <p>Compra, vende y conecta con otros estudiantes. Desde libros hasta muebles, encuentra todo lo que necesitas de compañeros universitarios.</p>
   </div>
 
@@ -81,20 +73,20 @@
 
   <!-- Category Pills -->
   <div class="category-pills">
-    <button class="pill active">🌐 All Items</button>
-    <button class="pill">📚 Books</button>
-    <button class="pill">💻 Electronics</button>
-    <button class="pill">🛋️ Furniture</button>
-    <button class="pill">👕 Fashion</button>
-    <button class="pill">⚽ Sports</button>
+    <button class="pill active"> Todos</button>
+    <button class="pill"> Libros</button>
+    <button class="pill"> Electrónicos</button>
+    <button class="pill"> Muebles</button>
+    <button class="pill"> Moda</button>
+    <button class="pill"> Deportes</button>
   </div>
 
   <!-- Main Content -->
   <main class="main-content" style="padding-top: 0;">
     <!-- Section Header -->
     <div class="section-header">
-      <h2 class="section-title">All Items</h2>
-      <span class="item-count" id="itemCount">0 items</span>
+      <h2 class="section-title">Todos los productos</h2>
+      <span class="item-count" id="itemCount">0 productos</span>
     </div>
 
     <!-- Items Grid -->
@@ -114,12 +106,11 @@
     </div>
   </div>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="footer-content">
       <div class="footer-section">
         <h3>Contacto</h3>
-        <p>Email: soporte@unimercs.com</p>
+        <p>Email: <a href="mailto:contacto@unimercs.com">contacto@unimercs.com</a></p>
         <p>Tel: +57 318 2167823</p>
       </div>
       <div class="footer-section">
@@ -127,25 +118,31 @@
         <ul>
           <li><a href="prueba.html">Inicio</a></li>
           <li><a href="pruebaExplorar.html">Explorar</a></li>
-          <li><a href="pruebaCuanto.html">Calculadora final</a></li>
-          <li><a href="pruebaListaElectivas.html">Lista de Electivas</a></li>
+          <li><a href="pruebaCrearPub.html">Crear Publicación</a></li>
         </ul>
       </div>
       <div class="footer-section">
         <h3>Síguenos</h3>
-        <p>¡Únete a nuestra comunidad en X!</p>
-        <p>¡Síguenos en Instagram!</p>
+        <ul>
+          <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1">¡Síguenos en Instagram!</a></li>
+          <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1">¡Únete a nuestra comunidad en X!</a></li>
+        </ul>
       </div>
       <div class="footer-section">
         <h3>Políticas</h3>
-        <a href="privacyPolicy.html"><p>Políticas de privacidad</p></a>
-        <a href="termsConditions.html"><p>Términos y condiciones</p></a>
+        <ul>
+          <li><a href="privacyPolicy.html">Políticas de privacidad</a></li>
+          <li><a href="termsConditions.html">Términos y condiciones</a></li>
+        </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2025 UNIMERCS - Todos los derechos reservados.</p>
+      <p>&copy; 2026 UNIMERCS - Todos los derechos reservados.</p>
     </div>
   </footer>
-  <script src="prueba.js"></script> 
+
+  <script src="prueba.js">
+    
+  </script>
 </body>
 </html>
