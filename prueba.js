@@ -83,6 +83,18 @@
       });
     }
 
+    // SELL ITEM BUTTON PROTECTION
+function handleCreatePost() {
+  const session = JSON.parse(localStorage.getItem('session'));
+  
+  if (!session || !session.email || !session.email.endsWith('javeriana.edu.co')) {
+    alert('⚠️ Debes iniciar sesión para crear una publicación');
+    window.location.href = 'betalogin.html';
+  } else {
+    window.location.href = 'pruebaCrearPub.html';
+  }
+}
+
     // Update stats
     function updateStats() {
       const totalProductsEl = document.getElementById('totalProducts');
@@ -151,6 +163,9 @@
     // Event delegation for feed
     if (feed) {
       feed.addEventListener('click', (e) => {
+        const card = e.target.closest('.item-card');
+        
+        // If clicking on action buttons, handle them
         if (e.target.classList.contains('like-btn')) {
           const postId = parseInt(e.target.dataset.id);
           const post = posts.find(p => p.id === postId);
@@ -159,14 +174,18 @@
             localStorage.setItem('posts', JSON.stringify(posts));
             e.target.innerHTML = `❤️ ${post.likes}`;
           }
-        } else if (e.target.classList.contains('comment-btn')) {
-          const card = e.target.closest('.item-card');
+          return;
+        }
+        
+        if (e.target.classList.contains('comment-btn')) {
           const commentSection = card.querySelector('.comment-section');
           commentSection.style.display = commentSection.style.display === 'block' ? 'none' : 'block';
-        } else if (e.target.classList.contains('submit-comment')) {
+          return;
+        }
+        
+        if (e.target.classList.contains('submit-comment')) {
           const postId = parseInt(e.target.dataset.id);
           const post = posts.find(p => p.id === postId);
-          const card = e.target.closest('.item-card');
           const commentInput = card.querySelector('.comment-input');
           if (commentInput?.value.trim()) {
             post.comments.push(commentInput.value.trim());
@@ -174,15 +193,32 @@
             commentInput.value = '';
             renderFeed();
           }
-        } else if (e.target.classList.contains('chat-btn')) {
+          return;
+        }
+        
+        if (e.target.classList.contains('chat-btn')) {
           if (chatUser && chatMessages && chatModal) {
             chatUser.textContent = e.target.dataset.user;
             chatMessages.innerHTML = `<p style="color: #95a5a6; text-align: center; padding: 20px;">¡Comienza a chatear con ${e.target.dataset.user}!</p>`;
             chatModal.style.display = 'flex';
           }
-        } else if (e.target.classList.contains('favorite-btn')) {
+          return;
+        }
+        
+        if (e.target.classList.contains('favorite-btn')) {
           e.target.textContent = e.target.textContent === '♡' ? '♥' : '♡';
           e.target.style.color = e.target.textContent === '♥' ? '#ff6b6b' : 'white';
+          return;
+        }
+
+        if (e.target.classList.contains('comment-input')) {
+          return;
+        }
+        
+        // Otherwise, navigate to details
+        if (card) {
+          const postId = card.dataset.postId;
+          window.location.href = `pruebaPubDetails.html?postId=${postId}`;
         }
       });
     }
