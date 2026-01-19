@@ -1,8 +1,24 @@
+// LOGIN PROTECTION - Place this at the top of your JS file or in a <script> tag
+document.addEventListener('DOMContentLoaded', () => {
+  const session = JSON.parse(localStorage.getItem('session'));
+  
+  // Check if user is logged in with a valid Javeriana email
+  if (!session || !session.email || !session.email.endsWith('javeriana.edu.co')) {
+    // Redirect to login page if not logged in
+    alert('⚠️ Debes iniciar sesión para acceder a esta página');
+    window.location.href = 'betalogin.html';
+    return;
+  }
+});
+
+
 document.addEventListener('DOMContentLoaded', () => {
       const menuToggle = document.getElementById('menuToggle');
       const menuClose = document.getElementById('menuClose');
       const sideMenu = document.getElementById('sideMenu');
       let isMenuOpen = false;
+
+      
 
       // Menu toggle with hover
       if (menuToggle && sideMenu) {
@@ -34,6 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         });
       }
+
+
 
       // Helper function to convert file to base64
       function fileToBase64(file) {

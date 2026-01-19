@@ -7,41 +7,44 @@
   <link rel="stylesheet" href="pruebaPubDetails.css">
 </head>
 <body>
-  <!-- Floating Background Elements -->
-  <div class="floating-elements">
-    <div class="floating-shape"></div>
-    <div class="floating-shape"></div>
-    <div class="floating-shape"></div>
-    <div class="floating-shape"></div>
-    <div class="floating-shape"></div>
-  </div>
-
+  <!-- Header -->
   <header class="header">
     <div class="menu-toggle" id="menuToggle">☰</div>
-    <div class="logo"><a href="prueba.html">UNIMERCS</a></div>
-    <div class="search-bar">
+    <a href="prueba.html" class="logo">
+      <div class="logo-icon">🛍</div>
+      <span>UNIMERCS</span>
+    </a>
+    <div class="search-container">
       <input type="text" placeholder="Busca tu próximo tesoro..." />
     </div>
-    <nav class="nav-links">
-      <a href="pruebaExplorar.html">Explorar</a>
-      <a href="betalogin.html">Iniciar Sesión</a>
-      <a href="BetaRegister.html">Registrarse</a>
-    </nav>
-    <div class="side-menu" id="sideMenu">
-      <div class="menu-main-content">
-        <a href="prueba.html">🏠 Inicio</a>
-        <a href="pruebaExplorar.html">🔍 Explorar</a>
-        <a href="pruebaCrearPub.html">✏️ Crear Publicación</a>
-      </div>
-      <div class="menu-bottom-section">
-        <a href="pruebaPerfil.html">👤 Perfil</a>
-        <a href="#" id="logoutSideLink">🚪 Cerrar Sesión</a>
-      </div>
+    <div class="header-icons">
+      
+      <button class="icon-btn" onclick="window.location.href='pruebaPerfil.html'">👤</button>
+      <button class="sell-btn" onclick="window.location.href='pruebaCrearPub.html'">Sell Item</button>
     </div>
   </header>
 
+  <!-- Side Menu -->
+  <div class="side-menu" id="sideMenu">
+    <div class="menu-header">
+      <h3 style="color: #ecf0f1;">Menú</h3>
+      <button class="menu-close" id="menuClose">✕</button>
+    </div>
+    <div class="menu-main-content">
+      <a href="prueba.html"> Inicio</a>
+      <a href="pruebaExplorar.html"> Explorar</a>
+      <a href="pruebaCrearPub.html"> Crear Publicación</a>
+    </div>
+    <div class="menu-bottom-section">
+      <a href="pruebaPerfil.html"> Perfil</a>
+      <a href="#" id="logoutSideLink"> Cerrar Sesión</a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
   <main class="main-content">
     <div class="product-details animate-fadeIn">
+      <a href="javascript:history.back()" class="back-button">← Volver</a>
       <h2 class="product-title" id="productTitle">Detalles del Producto</h2>
       <div class="product-content" id="productItem"></div>
     </div>
@@ -51,7 +54,7 @@
     <div class="footer-content">
       <div class="footer-section">
         <h3>Contacto</h3>
-        <p>Email: soporte@unimercs.com</p>
+        <p>Email: <a href="mailto:contacto@unimercs.com">contacto@unimercs.com</a></p>
         <p>Tel: +57 318 2167823</p>
       </div>
       <div class="footer-section">
@@ -59,23 +62,26 @@
         <ul>
           <li><a href="prueba.html">Inicio</a></li>
           <li><a href="pruebaExplorar.html">Explorar</a></li>
-          <li><a href="pruebaCuanto.html">Calculadora final</a></li>
-          <li><a href="pruebaListaElectivas.html">Lista de Electivas</a></li>
+          <li><a href="pruebaCrearPub.html">Crear Publicación</a></li>
         </ul>
       </div>
       <div class="footer-section">
         <h3>Síguenos</h3>
-        <p>¡Únete a nuestra comunidad en X!</p>
-        <p>¡Síguenos en Instagram!</p>
+        <ul>
+          <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1">¡Síguenos en Instagram!</a></li>
+          <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1">¡Únete a nuestra comunidad en X!</a></li>
+        </ul>
       </div>
       <div class="footer-section">
         <h3>Políticas</h3>
-        <p>Políticas de privacidad</p>
-        <p>Términos y condiciones</p>
+        <ul>
+          <li><a href="privacyPolicy.html">Políticas de privacidad</a></li>
+          <li><a href="termsConditions.html">Términos y condiciones</a></li>
+        </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2025 UNIMERCS - Todos los derechos reservados.</p>
+      <p>&copy; 2026 UNIMERCS - Todos los derechos reservados.</p>
     </div>
   </footer>
 

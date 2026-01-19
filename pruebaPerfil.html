@@ -7,20 +7,17 @@
   <link rel="stylesheet" href="pruebaPerfil.css">
 </head>
 <body>
-  <!-- Header -->
   <header class="header">
     <div class="menu-toggle" id="menuToggle">☰</div>
     <a href="prueba.html" class="logo">
-      <div class="logo-icon">🛍</div>
+      <div class="logo-icon">nig</div>
       <span>UNIMERCS</span>
     </a>
     <div class="search-container">
-      <input type="text" placeholder="Busca tu próximo tesoro..." />
+      <span class="search-icon">🔍</span>
+      <input type="text" placeholder="Busca tu siguiente producto..." class="search-input">
     </div>
     <div class="header-icons">
-      <button class="icon-btn">
-        🔔
-        <span class="notification-badge">3</span>
       </button>
       <button class="icon-btn"onclick="window.location.href='pruebaPerfil.html'">👤</button>
       <button class="sell-btn" onclick="window.location.href='pruebaCrearPub.html'">¡Vende aquí!</button>
@@ -61,11 +58,6 @@
     </div>
 
     <div class="profile-section animate-fadeIn">
-      <h3 class="section-title">💬 Comentarios en Profesores</h3>
-      <div id="commentsList"></div>
-    </div>
-
-    <div class="profile-section animate-fadeIn">
       <h3 class="section-title">👁️ Productos Vistos</h3>
       <div id="productsList"></div>
     </div>
@@ -75,9 +67,9 @@
       <div class="filter-bar">
         <select id="filterCategory" class="filter-category">
           <option value="all">Todas las categorías</option>
-          <option value="libros">📚 Libros</option>
-          <option value="comida">🍕 Comida</option>
-          <option value="objetos">📦 Objetos</option>
+          <option value="libros"> Libros</option>
+          <option value="comida"> Comida</option>
+          <option value="objetos"> Objetos</option>
         </select>
       </div>
       <div id="postsList"></div>
@@ -88,7 +80,7 @@
     <div class="footer-content">
       <div class="footer-section">
         <h3>Contacto</h3>
-        <p>Email: soporte@unimercs.com</p>
+        <p>Email: <a href="mailto:contacto@unimercs.com">contacto@unimercs.com</a></p>
         <p>Tel: +57 318 2167823</p>
       </div>
       <div class="footer-section">
@@ -96,8 +88,7 @@
         <ul>
           <li><a href="prueba.html">Inicio</a></li>
           <li><a href="pruebaExplorar.html">Explorar</a></li>
-          <li><a href="pruebaCuanto.html">Calculadora final</a></li>
-          <li><a href="pruebaListaElectivas.html">Lista de Electivas</a></li>
+          <li><a href="pruebaCrearPub.html">Crear Publicación</a></li>
         </ul>
       </div>
       <div class="footer-section">
